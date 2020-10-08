@@ -1,0 +1,16 @@
+[default]
+APP_NAME = "TodoList"
+
+[development]
+ENV_NAME = "Dev"
+
+[production]
+ENV_NAME = "Production"
+
+[homologation]
+ENV_NAME = "Homologation"
+
+[testing]
+ENV_NAME = "Quality"
+
+
