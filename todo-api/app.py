@@ -1,14 +1,14 @@
 from flask import Flask
+from dynaconf import settings
 
-from .domain import rest_api
 from .extensions import configuration
 
 
 def create_app(**config):
     app = Flask(__name__)
-    configuration.init_app(app, **config)
-    configuration.load(app)
+    app.config['SQLALCHEMY_DATABASE_URI'] = settings.DATABASE_URI
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-    rest_api.init_app(app)
+    configuration.init_app(app, **config)
 
     return app

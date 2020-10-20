@@ -1,11 +1,14 @@
 [default]
 APP_NAME = "TodoList"
+DATABASE_URI = "sqlite:////tmp/todo-api.db"
 
 [development]
 ENV_NAME = "Dev"
+DATABASE_URI = "sqlite:////tmp/todo-api-dev.db"
 
 [production]
 ENV_NAME = "Production"
+DATABASE_URI = "sqlite:////tmp/todo-api-prod.db"
 
 [homologation]
 ENV_NAME = "Homologation"
