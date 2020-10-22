@@ -12,10 +12,9 @@ class TaskEntity(db.Model, SerializerMixin):
         return '<TaskEntity %r>' % self.title
 
     @property
-    def serialize(self):
-        """Return object data in serializeable format"""
+    def to_text(self):
+        # Return object data in any text format
         return {
-            'id': self.id,
             'title': self.title,
             'description': self.description
         }

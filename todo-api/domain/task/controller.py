@@ -12,7 +12,7 @@ class TaskItem(Resource):
     def get(identifier):
         query = TaskEntity.query.filter_by(id=identifier).first()
         return jsonify({
-            'data': query.serialize
+            'data': query.to_dict()  # Using SQLAlchemy-serializer
         })
 
     @staticmethod
@@ -33,7 +33,7 @@ class TaskItemList(Resource):
     def get():
         query = TaskEntity.query.all()
         return jsonify({
-            'data': [result.serialize for result in query]
+            'data': [result.to_text for result in query]
         })
 
     @staticmethod
