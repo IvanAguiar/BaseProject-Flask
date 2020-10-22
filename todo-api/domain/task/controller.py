@@ -1,11 +1,19 @@
+import json
+
 from dynaconf import settings
+from flask import jsonify
 from flask_restful import Resource
+
+from .model import TaskEntity
 
 
 class TaskItem(Resource):
     @staticmethod
-    def get():
-        return "Welcome to the %s App! You're using the %s Environment!" % (settings.APP_NAME, settings.ENV_NAME)
+    def get(identifier):
+        query = TaskEntity.query.filter_by(id=identifier).first()
+        return jsonify({
+            'data': query.serialize
+        })
 
     @staticmethod
     def put():
@@ -23,7 +31,10 @@ class TaskItem(Resource):
 class TaskItemList(Resource):
     @staticmethod
     def get():
-        return "Welcome to the %s App! You're using the %s Environment!" % (settings.APP_NAME, settings.ENV_NAME)
+        query = TaskEntity.query.all()
+        return jsonify({
+            'data': [result.serialize for result in query]
+        })
 
     @staticmethod
     def post():

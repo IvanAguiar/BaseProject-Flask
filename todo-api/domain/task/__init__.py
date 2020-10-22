@@ -6,6 +6,7 @@ from .controller import TaskItemList
 
 def load_routes(blueprint):
     api = Api(blueprint)
-    api.add_resource(TaskItemList, '/tasks')
-    api.add_resource(TaskItem, '/task/<int:id>')
 
+    api.add_resource(TaskItemList, '/tasks')
+
+    api.add_resource(TaskItem, '/task/<int:identifier>')

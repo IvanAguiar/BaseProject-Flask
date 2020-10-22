@@ -1,5 +1,6 @@
-from extensions.configuration import db
 from sqlalchemy_serializer import SerializerMixin
+
+from extensions.database import db
 
 
 class TaskEntity(db.Model, SerializerMixin):
@@ -9,3 +10,12 @@ class TaskEntity(db.Model, SerializerMixin):
 
     def __repr__(self):
         return '<TaskEntity %r>' % self.title
+
+    @property
+    def serialize(self):
+        """Return object data in serializeable format"""
+        return {
+            'id': self.id,
+            'title': self.title,
+            'description': self.description
+        }

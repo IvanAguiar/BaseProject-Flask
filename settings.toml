@@ -1,14 +1,13 @@
 [default]
 APP_NAME = "TodoList"
-DATABASE_URI = "sqlite:////tmp/todo-api.db"
+SQLALCHEMY_DATABASE_URI = "sqlite:///db.sqlite3"
+SQLALCHEMY_TRACK_MODIFICATIONS = false
 
 [development]
 ENV_NAME = "Dev"
-DATABASE_URI = "sqlite:////tmp/todo-api-dev.db"
 
 [production]
 ENV_NAME = "Production"
-DATABASE_URI = "sqlite:////tmp/todo-api-prod.db"
 
 [homologation]
 ENV_NAME = "Homologation"
